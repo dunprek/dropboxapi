@@ -1,4 +1,4 @@
-package com.don.working.with.dropboxapi;
+package com.don.working.with.dropboxapi.task;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import java.io.OutputStream;
 /**
  * Task to download a file from Dropbox and put it in the Downloads folder
  */
- class DownloadFileTask extends AsyncTask<FileMetadata, Void, File> {
+public class DownloadFileTask extends AsyncTask<FileMetadata, Void, File> {
 
     private final Context mContext;
     private final DbxClientV2 mDbxClient;
@@ -30,7 +30,7 @@ import java.io.OutputStream;
         void onError(Exception e);
     }
 
-    DownloadFileTask(Context context, DbxClientV2 dbxClient, Callback callback) {
+    public DownloadFileTask(Context context, DbxClientV2 dbxClient, Callback callback) {
         mContext = context;
         mDbxClient = dbxClient;
         mCallback = callback;

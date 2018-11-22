@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +21,7 @@
             android:id="@+id/text"
             android:maxLines="1"
             android:textSize="18sp"
+            tools:text="Text"
             android:layout_marginStart="@dimen/global_padding"
             android:layout_gravity="center_vertical"
             android:layout_width="match_parent"

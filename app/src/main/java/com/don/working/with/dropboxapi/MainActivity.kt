@@ -8,7 +8,8 @@ import android.widget.Toast
 import com.dropbox.core.android.Auth
 import android.content.Intent
 import android.util.Log
-import com.don.working.with.dropboxapi.internal.OpenWithActivity
+import com.don.working.with.dropboxapi.task.DropboxClientFactory
+import com.don.working.with.dropboxapi.task.GetCurrentAccountTask
 import com.dropbox.core.v2.users.FullAccount
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -53,10 +54,6 @@ class MainActivity : DropboxActivity() {
                 startActivity(Intent(this@MainActivity, FilesActivity::class.java))
             }
 
-            btn_open_with.setOnClickListener {
-                val openWithIntent = Intent(this@MainActivity, OpenWithActivity::class.java)
-                startActivity(openWithIntent)
-            }
         }
     }
 

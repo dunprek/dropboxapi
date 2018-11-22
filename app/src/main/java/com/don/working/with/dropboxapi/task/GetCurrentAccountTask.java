@@ -1,4 +1,4 @@
-package com.don.working.with.dropboxapi;
+package com.don.working.with.dropboxapi.task;
 
 
 import android.os.AsyncTask;
@@ -10,7 +10,7 @@ import com.dropbox.core.v2.users.FullAccount;
 /**
  * Async task for getting user account info
  */
-class GetCurrentAccountTask extends AsyncTask<Void, Void, FullAccount> {
+public class GetCurrentAccountTask extends AsyncTask<Void, Void, FullAccount> {
 
     private final DbxClientV2 mDbxClient;
     private final Callback mCallback;
@@ -21,7 +21,7 @@ class GetCurrentAccountTask extends AsyncTask<Void, Void, FullAccount> {
         void onError(Exception e);
     }
 
-    GetCurrentAccountTask(DbxClientV2 dbxClient, Callback callback) {
+  public   GetCurrentAccountTask(DbxClientV2 dbxClient, Callback callback) {
         mDbxClient = dbxClient;
         mCallback = callback;
     }

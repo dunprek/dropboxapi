@@ -1,7 +1,8 @@
-package com.don.working.with.dropboxapi;
+package com.don.working.with.dropboxapi.task;
 
 import android.net.Uri;
 
+import com.don.working.with.dropboxapi.FilesAdapter;
 import com.dropbox.core.DbxDownloader;
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;

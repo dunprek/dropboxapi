@@ -1,7 +1,8 @@
-package com.don.working.with.dropboxapi;
+package com.don.working.with.dropboxapi.task;
 
 import android.content.Context;
 
+import com.don.working.with.dropboxapi.task.FileThumbnailRequestHandler;
 import com.dropbox.core.v2.DbxClientV2;
 import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;

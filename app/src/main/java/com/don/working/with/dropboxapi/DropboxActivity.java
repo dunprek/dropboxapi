@@ -4,6 +4,8 @@ package com.don.working.with.dropboxapi;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 
+import com.don.working.with.dropboxapi.task.DropboxClientFactory;
+import com.don.working.with.dropboxapi.task.PicassoClient;
 import com.dropbox.core.android.Auth;
 
 
