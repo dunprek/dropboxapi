@@ -8,22 +8,14 @@
         tools:context=".MainActivity">
 
     <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_upload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login!"/>
+            android:text="!"/>
 
-    <Button
-            android:id="@+id/btn_files"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Files!"/>
 
-    <Button
-            android:id="@+id/btn_open_with"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OPEN WITH!"/>
+
+
 
     <TextView
         android:id="@+id/tv_name"

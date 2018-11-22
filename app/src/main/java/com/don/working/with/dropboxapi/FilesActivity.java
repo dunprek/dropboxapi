@@ -149,35 +149,7 @@ public class FilesActivity extends DropboxActivity {
         }
     }
 
-    @Override
-    protected void loadData() {
 
-        final ProgressDialog dialog = new ProgressDialog(this);
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setCancelable(false);
-        dialog.setMessage("Loading");
-        dialog.show();
-
-        new ListFolderTask(DropboxClientFactory.getClient(), new ListFolderTask.Callback() {
-            @Override
-            public void onDataLoaded(ListFolderResult result) {
-                dialog.dismiss();
-
-                mFilesAdapter.setFiles(result.getEntries());
-            }
-
-            @Override
-            public void onError(Exception e) {
-                dialog.dismiss();
-
-                Log.e(TAG, "Failed to list folder.", e);
-                Toast.makeText(FilesActivity.this,
-                        "An error has occurred",
-                        Toast.LENGTH_SHORT)
-                        .show();
-            }
-        }).execute(mPath);
-    }
 
     private void downloadFile(FileMetadata file) {
         final ProgressDialog dialog = new ProgressDialog(this);
@@ -213,6 +185,8 @@ public class FilesActivity extends DropboxActivity {
     private void viewFileInExternalApp(File result) {
 
         Log.e("TAGGGG",result.getAbsolutePath());
+
+        finish();
       /*  Intent intent = new Intent(Intent.ACTION_VIEW);
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         String ext = result.getName().substring(result.getName().indexOf(".") + 1);
@@ -277,6 +251,36 @@ public class FilesActivity extends DropboxActivity {
                 action.getPermissions(),
                 action.getCode()
         );
+    }
+
+    @Override
+    protected void loadData() {
+
+        final ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setCancelable(false);
+        dialog.setMessage("Loading");
+        dialog.show();
+
+        new ListFolderTask(DropboxClientFactory.getClient(), new ListFolderTask.Callback() {
+            @Override
+            public void onDataLoaded(ListFolderResult result) {
+                dialog.dismiss();
+
+                mFilesAdapter.setFiles(result.getEntries());
+            }
+
+            @Override
+            public void onError(Exception e) {
+                dialog.dismiss();
+
+                Log.e(TAG, "Failed to list folder.", e);
+                Toast.makeText(FilesActivity.this,
+                        "An error has occurred",
+                        Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }).execute(mPath);
     }
 
     private enum FileAction {

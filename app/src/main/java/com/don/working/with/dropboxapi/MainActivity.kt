@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat
 import android.widget.Toast
 import com.dropbox.core.android.Auth
 import android.content.Intent
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.don.working.with.dropboxapi.task.DropboxClientFactory
 import com.don.working.with.dropboxapi.task.GetCurrentAccountTask
@@ -15,8 +16,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : DropboxActivity() {
+
+
     override fun loadData() {
-        GetCurrentAccountTask(
+       /* GetCurrentAccountTask(
             DropboxClientFactory.getClient(),
             object : GetCurrentAccountTask.Callback {
                 override fun onComplete(result: FullAccount) {
@@ -28,12 +31,19 @@ class MainActivity : DropboxActivity() {
                 override fun onError(e: Exception) {
                     Log.e(javaClass.name, "Failed to get account details.", e)
                 }
-            }).execute()
+            }).execute()*/
+
+
+
+
+
     }
 
     private val TAG = MainActivity::class.java.simpleName
 
+
     val MULTIPLE_PERMISSIONS = 10 // code you want.
+
     internal var permissions = arrayOf(
         android.Manifest.permission.READ_EXTERNAL_STORAGE,
         android.Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -44,14 +54,18 @@ class MainActivity : DropboxActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (checkPermission()) {
-            btn_login.setOnClickListener {
-                Auth.startOAuth2Authentication(this, getString(R.string.app_key));
-            }
 
-            btn_files.setOnClickListener {
+        btn_upload.setOnClickListener {
+            if (checkPermission()) {
 
-                startActivity(Intent(this@MainActivity, FilesActivity::class.java))
+                if(hasToken()){
+                    startActivity(Intent(this@MainActivity, FilesActivity::class.java))
+
+                }else{
+                    Auth.startOAuth2Authentication(this, getString(R.string.app_key));
+
+                }
+
             }
 
         }
@@ -84,12 +98,23 @@ class MainActivity : DropboxActivity() {
                 val writeExternalStorage = grantResults[1] == PackageManager.PERMISSION_GRANTED
 
                 if (readExternalStorage && writeExternalStorage) {
+                   /* if(hasToken()){
+                        startActivity(Intent(this@MainActivity, FilesActivity::class.java))
 
+                    }else{
+                        Auth.startOAuth2Authentication(this, getString(R.string.app_key));
+
+                    }*/
                 } else {
                     Toast.makeText(this, "GAGAL", Toast.LENGTH_LONG).show()
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 
 
